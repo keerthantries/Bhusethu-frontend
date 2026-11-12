@@ -424,14 +424,15 @@ export default function PropertiesPage() {
                           {property.price || "Price on request"}
                           <small>Guide price</small>
                         </p>
-                        <Link
+                        <button
                           className="plp-card__cta"
+                          type="button"
                           aria-label={`Enquire about ${property.title}`}
-                          to="/contact"
+                          onClick={() => setModal({ type: "buy", property })}
                         >
                           Enquire
                           <ArrowUpRight size={16} strokeWidth={2} aria-hidden="true" />
-                        </Link>
+                        </button>
                       </div>
                     </div>
                   </article>
@@ -656,7 +657,13 @@ export default function PropertiesPage() {
         </div>
       </footer>
 
-      {modal && <EnquiryModal type={modal} onClose={() => setModal(null)} />}
+      {modal && (
+        <EnquiryModal
+          type={typeof modal === "string" ? modal : modal.type}
+          property={typeof modal === "string" ? undefined : modal.property}
+          onClose={() => setModal(null)}
+        />
+      )}
     </>
   );
 }

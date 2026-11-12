@@ -114,8 +114,16 @@ const SERVICE_FORMS = {
   },
 };
 
-export default function EnquiryModal({ type, onClose }) {
-  const cfg = SERVICE_FORMS[type];
+export default function EnquiryModal({ type, property, onClose }) {
+  const cfg = property
+    ? {
+        title: "Enquire about this property",
+        sub: "Share your name and phone number. An advisor will call you back.",
+        service: "property_enquiry",
+        fields: [],
+        property,
+      }
+    : SERVICE_FORMS[type];
   const [status, setStatus] = useState("idle"); // idle | sending | done | error
 
   useEffect(() => {
@@ -153,13 +161,21 @@ export default function EnquiryModal({ type, onClose }) {
     e.preventDefault();
     const form = e.currentTarget;
     const fd = new FormData(form);
-    const extra = cfg.fields
-      .map((f) => {
-        const value = (fd.get(f.name) || "").toString().trim();
-        return value ? `${f.name}: ${value}` : null;
-      })
-      .filter(Boolean)
-      .join("\n");
+    const propertyLines = cfg.property
+      ? [
+          `Property: ${cfg.property.title || ""}`,
+          `Property ID: ${cfg.property.id || ""}`,
+        ]
+      : [];
+    const extra = [
+      ...propertyLines,
+      ...cfg.fields
+        .map((f) => {
+          const value = (fd.get(f.name) || "").toString().trim();
+          return value ? `${f.name}: ${value}` : null;
+        })
+        .filter(Boolean),
+    ].join("\n");
 
     const body = new FormData();
     body.append("client_name", (fd.get("client_name") || "").toString().trim());
@@ -168,6 +184,7 @@ export default function EnquiryModal({ type, onClose }) {
       (fd.get("client_phone") || "").toString().trim(),
     );
     body.append("service_type", cfg.service);
+    if (cfg.property?.id) body.append("property_id", cfg.property.id);
     body.append("client_message", `[${cfg.title}]\n${extra}`);
     fd.getAll("images").forEach((file) => {
       if (file && file.size) body.append("images", file);
@@ -221,6 +238,17 @@ export default function EnquiryModal({ type, onClose }) {
             <h3 id="modal-title">{cfg.title}</h3>
             <p className="modal__sub">{cfg.sub}</p>
             <div className="modal__grid">
+              {cfg.property && (
+                <div className="field modal__full">
+                  <label htmlFor="m-property">Property</label>
+                  <input
+                    id="m-property"
+                    type="text"
+                    value={cfg.property.title || ""}
+                    readOnly
+                  />
+                </div>
+              )}
               <div className="field">
                 <label htmlFor="m-name">Full name *</label>
                 <input

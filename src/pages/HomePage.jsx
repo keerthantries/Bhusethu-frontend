@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { Building2, HandCoins, Scale } from "lucide-react";
 import ServicesSection from "../components/ServicesSection";
+import PropertyEnquiryModal from "../components/EnquiryModal";
 import PhoneField from "../components/PhoneField";
 import bhusethuLogo from "../assets/images/bhusethu_logo.webp";
 import { api, API_BASE } from "../api";
@@ -1516,15 +1517,25 @@ export default function HomePage() {
         </button>
       </div>
 
-      {modal && <EnquiryModal type={modal} onClose={closeModal} />}
+      {modal &&
+        (typeof modal === "string" ? (
+          <EnquiryModal type={modal} onClose={closeModal} />
+        ) : (
+          <PropertyEnquiryModal
+            type={modal.type}
+            property={modal.property}
+            onClose={closeModal}
+          />
+        ))}
 
       {activeProperty && (
         <PropertyModal
           property={activeProperty}
           onClose={() => setActiveProperty(null)}
           onEnquire={() => {
+            const property = activeProperty;
             setActiveProperty(null);
-            setModal("buy");
+            setModal({ type: "buy", property });
           }}
         />
       )}
