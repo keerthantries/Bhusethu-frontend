@@ -3787,6 +3787,29 @@ h2 em {
 .p-card--cta .eyebrow::before {
   background: var(--gold);
 }
+/* Desktop: let cards follow each image's own aspect ratio (no cropping) */
+@media (min-width: 1024px) {
+  .rail {
+    align-items: stretch;
+  }
+  .p-card:not(.p-card--cta) {
+    min-height: 0;
+    gap: 1rem;
+    justify-content: flex-start;
+  }
+  .p-card:not(.p-card--cta) img {
+    position: relative;
+    inset: auto;
+    z-index: 0;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: calc(var(--radius-lg) - 8px);
+  }
+  .p-card:not(.p-card--cta)::after {
+    display: none;
+  }
+}
 /* Service rail */
 .s-rail {
   display: flex;
@@ -4379,8 +4402,8 @@ h2 em {
   opacity: 0;
   transform: scale(1.07);
   transition:
-    opacity 0.6s ease,
-    transform 3.4s ease-out;
+    opacity 0.9s ease,
+    transform 7s ease-out;
 }
 .hz__slide.is-on {
   opacity: 1;
@@ -4644,15 +4667,31 @@ h2 em {
   }
   .hz__report {
     position: absolute;
-    left: -3rem;
-    bottom: 2.25rem;
-    width: 285px;
+    right: -1.5rem;
+    bottom: 1.5rem;
+    width: 240px;
     margin: 0;
+    padding: 0.9rem 1rem 0.85rem;
+    max-height: 26rem;
+    overflow: hidden;
+    transition:
+      max-height 0.35s ease,
+      box-shadow 0.35s ease;
+  }
+  .hz__report:hover,
+  .hz__report:focus-within {
+    max-height: 26rem;
+  }
+  .hz__frame:hover ~ .hz__report {
+    max-height: 5.2rem;
+  }
+  .hz__copy {
+    transform: translateY(-2rem);
   }
 }
 @media (min-width: 1280px) {
   .hz__report {
-    left: -4rem;
+    right: -2rem;
   }
 }
 @media (max-width: 480px) {
@@ -5269,8 +5308,8 @@ h2 em {
     opacity: 0;
     transform: scale(1.08);
     transition:
-      opacity 0.7s ease,
-      transform 3.6s ease-out;
+      opacity 0.9s ease,
+      transform 7s ease-out;
   }
   .hn__slide.is-on {
     opacity: 1;
@@ -5373,6 +5412,14 @@ h2 em {
   /* text + buttons */
   .hn__body {
     padding-top: 1rem;
+  }
+  .hn__title {
+    margin: 0 0 0.35rem;
+    color: #0a3459;
+  }
+  .hn__body .hn__sub {
+    margin: 0 0 0.9rem;
+    color: #4b5563;
   }
   .hn__lead {
     margin: 0 0 0.9rem;

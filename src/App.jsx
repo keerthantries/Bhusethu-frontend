@@ -8,7 +8,6 @@ import PropertiesPage from './pages/PropertiesPage.jsx'
 import ProjectsPage from './pages/ProjectsPage.jsx'
 import ServiceDetailPage from './pages/ServiceDetailPage.jsx'
 import PrivacyPage from './pages/PrivacyPage.jsx'
-import PropertyTridasaRisePage from './pages/PropertyTridasaRisePage.jsx'
 import PropertyListPage from './pages/PropertyListPage.jsx'
 import NotFoundPage from './pages/NotFoundPage.jsx'
 
@@ -35,7 +34,7 @@ function SiteRuntime() {
         const slides = Array.from(hzBox.querySelectorAll('.hz__slide'))
         const bars = Array.from(hero.querySelectorAll('[data-hz-bar]'))
         const cap = hero.querySelector('[data-hz-caption]')
-        const DELAY = 2600
+        const DELAY = 5000
         let i = 0
         hero.style.setProperty('--hz-delay', DELAY + 'ms')
         const show = (n) => {
@@ -49,6 +48,7 @@ function SiteRuntime() {
         bars.forEach((b, n) => {
           b.onclick = () => show(n)
         })
+        scrollTimers.push(setInterval(() => show(i + 1), DELAY))
       }
 
       const hnRoot = document.querySelector('[data-hn]')
@@ -68,6 +68,7 @@ function SiteRuntime() {
         dots.forEach((d, n) => {
           d.onclick = () => show(n)
         })
+        scrollTimers.push(setInterval(() => show(i + 1), 5000))
       }
 
       if (location.hash) {
@@ -120,9 +121,6 @@ export default function App() {
 
         <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/privacy.html" element={<PrivacyPage />} />
-
-        <Route path="/property-tridasa-rise" element={<PropertyTridasaRisePage />} />
-        <Route path="/property-tridasa-rise.html" element={<PropertyTridasaRisePage />} />
 
         <Route path="/property-List" element={<PropertyListPage />} />
         <Route path="/property-List.html" element={<PropertyListPage />} />

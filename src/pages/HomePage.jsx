@@ -151,11 +151,12 @@ const FEATURED_PROPERTIES = [
     type: "Surveyed land plots",
     price: "₹45 L onwards",
     badge: "Clear title",
-    image: "images/properties/land-plots.png",
+    image:
+      "https://res.cloudinary.com/doqbjnliq/image/upload/v1794396464/Surveyor_Walking_Through_Rice_Fields_mg73d1.png",
     gallery: [
-      "images/properties/land-plots.png",
-      "images/properties/choutuppal_land/property-1.webp",
-      "images/properties/choutuppal_land/property-4.webp",
+      "https://res.cloudinary.com/doqbjnliq/image/upload/v1794396464/Surveyor_Walking_Through_Rice_Fields_mg73d1.png",
+      "https://res.cloudinary.com/doqbjnliq/image/upload/v1794396464/Surveyor_Walking_Through_Rice_Fields_mg73d1.png",
+      "https://res.cloudinary.com/doqbjnliq/image/upload/v1794396464/Surveyor_Walking_Through_Rice_Fields_mg73d1.png",
     ],
     facts: [
       { label: "Plot type", value: "Open land" },
@@ -683,61 +684,40 @@ export default function HomePage() {
             <div className="hn__slides">
               <img
                 className="hn__slide is-on"
-                src="images/hero/property-6.webp"
-                alt="Land parcel at Choutuppal, Telangana"
-                data-label="Land parcel, Choutuppal"
-                width="576"
-                height="806"
+                src="https://res.cloudinary.com/doqbjnliq/image/upload/v1794393112/Gemini_Generated_Image_nm7gj0nm7gj0nm7g_tvn1nl.png"
+                alt="Bhusethu property advisory"
+                data-label="Property advisory"
+                width="1024"
+                height="1024"
                 fetchPriority="high"
               />
               <img
                 className="hn__slide"
-                src="images/properties/bulding2.webp"
-                alt="Tridasa Rise towers, Nallagandla"
-                data-label="Tridasa Rise, Nallagandla"
-                width="760"
-                height="574"
+                src="https://res.cloudinary.com/doqbjnliq/image/upload/v1794393112/Gemini_Generated_Image_lre5uplre5uplre5_meele4.png"
+                alt="Bhusethu legal verification"
+                data-label="Legal verification"
+                width="1024"
+                height="1024"
                 loading="lazy"
               />
               <img
                 className="hn__slide"
-                src="images/properties/commercial-building.png"
-                alt="Commercial building"
-                data-label="Commercial building"
-                width="1260"
-                height="806"
+                src="https://res.cloudinary.com/doqbjnliq/image/upload/v1794393112/Gemini_Generated_Image_v02aftv02aftv02a_lspozv.png"
+                alt="Bhusethu land due diligence"
+                data-label="Land due diligence"
+                width="1024"
+                height="1024"
                 loading="lazy"
               />
               <img
                 className="hn__slide"
-                src="images/properties/bulding1.jpg"
-                alt="Tridasa Rise entrance"
-                data-label="Tridasa Rise entrance"
-                width="1092"
-                height="540"
+                src="https://res.cloudinary.com/doqbjnliq/image/upload/v1794393112/Gemini_Generated_Image_ybwvm7ybwvm7ybwv_cls4i3.png"
+                alt="Bhusethu title checks"
+                data-label="Title checks"
+                width="1024"
+                height="1024"
                 loading="lazy"
               />
-              <img
-                className="hn__slide"
-                src="images/properties/land-plots.png"
-                alt="Surveyed land plots"
-                data-label="Surveyed land plots"
-                width="1260"
-                height="806"
-                loading="lazy"
-              />
-            </div>
-
-            <p className="hn__tag">Telangana & Andhra Pradesh</p>
-            <p className="hn__label" data-hn-label="">
-              Land parcel, Choutuppal
-            </p>
-
-            <div className="hn__text">
-              <h1 id="hn-title">
-                Verify Property <em>Before You Purchase.</em>
-              </h1>
-              <p className="hn__sub">Independent Legal & Property Advisory.</p>
             </div>
 
             <div className="hn__dots" role="group" aria-label="Property images">
@@ -762,15 +742,14 @@ export default function HomePage() {
                 data-hn-dot=""
                 aria-label="Image 4"
               ></button>
-              <button
-                type="button"
-                data-hn-dot=""
-                aria-label="Image 5"
-              ></button>
             </div>
           </div>
 
           <div className="hn__body">
+            <h1 id="hn-title" className="hn__title">
+              Verify Property <em>Before You Purchase.</em>
+            </h1>
+            <p className="hn__sub">Independent Legal & Property Advisory.</p>
             <p className="hn__lead">
               Ownership verification, title checks, encumbrance verification and
               property advisory across Telangana & Andhra Pradesh.
@@ -923,50 +902,38 @@ export default function HomePage() {
                 >
                   <img
                     className="hz__slide is-on"
-                    src="images/hero/property-6.webp"
-                    alt="Paddy land parcel with hills at Choutuppal, Telangana"
-                    data-label="Land parcel, Choutuppal"
-                    width="576"
-                    height="806"
+                    src="https://res.cloudinary.com/doqbjnliq/image/upload/v1794393112/Gemini_Generated_Image_nm7gj0nm7gj0nm7g_tvn1nl.png"
+                    alt="Bhusethu property advisory"
+                    data-label="Property advisory"
+                    width="1024"
+                    height="1024"
                     fetchPriority="high"
                   />
                   <img
                     className="hz__slide"
-                    src="images/properties/bulding2.webp"
-                    alt="Tridasa Rise residential towers in Nallagandla, Hyderabad"
-                    data-label="Tridasa Rise, Nallagandla"
-                    width="760"
-                    height="574"
+                    src="https://res.cloudinary.com/doqbjnliq/image/upload/v1794393112/Gemini_Generated_Image_lre5uplre5uplre5_meele4.png"
+                    alt="Bhusethu legal verification"
+                    data-label="Legal verification"
+                    width="1024"
+                    height="1024"
                   />
                   <img
                     className="hz__slide"
-                    src="images/properties/commercial-building.png"
-                    alt="Commercial building under construction"
-                    data-label="Commercial building"
-                    width="1260"
-                    height="806"
+                    src="https://res.cloudinary.com/doqbjnliq/image/upload/v1794393112/Gemini_Generated_Image_v02aftv02aftv02a_lspozv.png"
+                    alt="Bhusethu land due diligence"
+                    data-label="Land due diligence"
+                    width="1024"
+                    height="1024"
                   />
                   <img
                     className="hz__slide"
-                    src="images/properties/bulding1.jpg"
-                    alt="Tridasa Rise project entrance"
-                    data-label="Tridasa Rise entrance"
-                    width="1092"
-                    height="540"
-                  />
-                  <img
-                    className="hz__slide"
-                    src="images/properties/land-plots.png"
-                    alt="Aerial view of surveyed land plots"
-                    data-label="Surveyed land plots"
-                    width="1260"
-                    height="806"
+                    src="https://res.cloudinary.com/doqbjnliq/image/upload/v1794393112/Gemini_Generated_Image_ybwvm7ybwvm7ybwv_cls4i3.png"
+                    alt="Bhusethu title checks"
+                    data-label="Title checks"
+                    width="1024"
+                    height="1024"
                   />
                 </div>
-
-                <p className="hz__caption" data-hz-caption="" aria-live="off">
-                  Land parcel, Choutuppal
-                </p>
 
                 <div
                   className="hz__bars"
@@ -977,31 +944,25 @@ export default function HomePage() {
                     className="hz__bar is-on"
                     type="button"
                     data-hz-bar=""
-                    aria-label="Show image 1 of 5"
+                    aria-label="Show image 1 of 4"
                   ></button>
                   <button
                     className="hz__bar"
                     type="button"
                     data-hz-bar=""
-                    aria-label="Show image 2 of 5"
+                    aria-label="Show image 2 of 4"
                   ></button>
                   <button
                     className="hz__bar"
                     type="button"
                     data-hz-bar=""
-                    aria-label="Show image 3 of 5"
+                    aria-label="Show image 3 of 4"
                   ></button>
                   <button
                     className="hz__bar"
                     type="button"
                     data-hz-bar=""
-                    aria-label="Show image 4 of 5"
-                  ></button>
-                  <button
-                    className="hz__bar"
-                    type="button"
-                    data-hz-bar=""
-                    aria-label="Show image 5 of 5"
+                    aria-label="Show image 4 of 4"
                   ></button>
                 </div>
               </div>
@@ -1173,10 +1134,10 @@ export default function HomePage() {
                   <span className="badge">Zero brokerage</span>
                 </div>
                 <img
-                  src="images/properties/bulding2.webp"
+                  src="https://res.cloudinary.com/doqbjnliq/image/upload/v1794396962/Unfinished_High-Rise_Construction_Site_z9mlu8.png"
                   alt="Tridasa Rise residential towers in Nallagandla, Hyderabad"
-                  width="400"
-                  height="302"
+                  width="1024"
+                  height="1024"
                   loading="lazy"
                 />
                 <div className="p-card__body">
@@ -1194,7 +1155,7 @@ export default function HomePage() {
                     <Link
                       className="p-card__link"
                       aria-label="View Tridasa Rise details"
-                      to="/property-tridasa-rise"
+                      to="/contact?service=property_enquiry&property=Tridasa%20Rise"
                     >
                       <svg aria-hidden="true">
                         <use href="images/icons.svg#icon-arrow-up-right" />
@@ -1210,10 +1171,10 @@ export default function HomePage() {
                   <span className="badge">Site inspected</span>
                 </div>
                 <img
-                  src="images/hero-inspection.webp"
+                  src="https://res.cloudinary.com/doqbjnliq/image/upload/v1794396464/Surveyor_Walking_Through_Rice_Fields_mg73d1.png"
                   alt="Land parcel at Choutuppal, Telangana"
-                  width="576"
-                  height="806"
+                  width="1024"
+                  height="1024"
                   loading="lazy"
                 />
                 <div className="p-card__body">
