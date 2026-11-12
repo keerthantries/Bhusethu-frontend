@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="Bhusethu">
+  <rect width="48" height="48" rx="11" fill="#7A3B2A"/>
+  <path d="M13 34V20.6L24 13l11 7.6V34" fill="none" stroke="#F5F0E6" stroke-width="1.9" stroke-linejoin="round"/>
+  <path d="M19 34v-8.2h10V34" fill="none" stroke="#D8A76B" stroke-width="1.9" stroke-linejoin="round"/>
+  <path d="M24 13v6.2" stroke="#D8A76B" stroke-width="1.9" stroke-linecap="round"/>
+  <path d="M10 37.5h28" stroke="#D8A76B" stroke-width="1.9" stroke-linecap="round"/>
+</svg>
