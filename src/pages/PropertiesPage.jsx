@@ -43,9 +43,8 @@ export default function PropertiesPage() {
   }, [search]);
 
   useEffect(() => {
-    document.body.classList.toggle("nav-open", panelOpen);
-    return () => document.body.classList.remove("nav-open");
-  }, [panelOpen]);
+    document.body.classList.remove("nav-open");
+  }, []);
 
   const params = { q: query, type, location, budget, sort };
   const { data: properties = [], isError } = useQuery({
