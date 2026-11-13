@@ -1,3 +1,4 @@
+import SiteFooter from "../components/SiteFooter";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
@@ -5,7 +6,7 @@ import { Building2, HandCoins, Scale } from "lucide-react";
 import ServicesSection from "../components/ServicesSection";
 import PropertyEnquiryModal from "../components/EnquiryModal";
 import PhoneField from "../components/PhoneField";
-import bhusethuLogo from "../assets/images/bhusethu_logo.webp";
+import bhusethuLogo from "../assets/images/bhusethu_logo.png";
 import { api, API_BASE } from "../api";
 import { toCard } from "../propertyUtils";
 import { submitEnquiry, resetEnquiry } from "../enquirySubmit";
@@ -608,7 +609,7 @@ export default function HomePage() {
             <Link aria-current="page" to="/">
               Home
             </Link>
-            <Link to="/#services">Services</Link>
+            <Link to="/services">Services</Link>
             <Link to="/properties">Properties</Link>
             <Link to="/projects">Projects</Link>
             <Link to="/about">About</Link>
@@ -650,7 +651,7 @@ export default function HomePage() {
           <Link aria-current="page" to="/">
             Home
           </Link>
-          <Link to="/#services">Services</Link>
+          <Link to="/services">Services</Link>
           <Link to="/properties">Properties</Link>
           <Link to="/projects">Projects</Link>
           <Link to="/about">About</Link>
@@ -1423,66 +1424,7 @@ export default function HomePage() {
         </section>
       </main>
 
-      <footer className="site-footer site-footer--slim">
-        <div className="container">
-          <div className="footer-top">
-            <div className="footer-brand">
-              <Link
-                className="brand"
-                aria-label="Bhusethu Property Solutions — home"
-                to="/"
-              >
-                <img className="brand-mark" src={bhusethuLogo} alt="Bhusethu" />
-                <span className="brand-copy">
-                  <span className="brand-name">Bhusethu</span>
-                  <span className="brand-sub">Property Solutions</span>
-                </span>
-              </Link>
-              <p>
-                Property verification, advisory and transaction support across
-                Telangana and Andhra Pradesh.
-              </p>
-              <div className="footer-contact">
-                <a href="tel:+918125291166">+91 81252 91166</a>
-                <a href="mailto:support@bhusethu.com">support@bhusethu.com</a>
-                <span style={{ color: "rgba(245, 240, 230, 0.55)" }}>
-                  CoWork Trendz, Capital Park, Madhapur, Hyderabad
-                </span>
-              </div>
-            </div>
-            <nav className="footer-col" aria-label="Explore">
-              <h4>Explore</h4>
-              <ul>
-                <li>
-                  <Link to="/properties">Properties</Link>
-                </li>
-                <li>
-                  <Link to="/#services">Services</Link>
-                </li>
-                <li>
-                  <Link to="/projects">Projects</Link>
-                </li>
-                <li>
-                  <Link to="/about">About us</Link>
-                </li>
-                <li>
-                  <Link to="/contact">Contact</Link>
-                </li>
-              </ul>
-            </nav>
-          </div>
-          <div className="footer-bottom">
-            <p>
-              © <span data-year="">2026</span> Bhusethu Property Solutions. All
-              rights reserved.
-            </p>
-            <p>
-              <Link to="/privacy">Privacy policy</Link> ·
-              <Link to="/contact">Contact</Link>
-            </p>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
 
       <div className="mobile-cta mobile-cta--3">
         <button

@@ -62,7 +62,7 @@ export default function AdminPage() {
         <div className="container admin-top__bar">
           <Link className="admin-top__brand" to="/">
             <img
-              src="/images/bhusethu_logo.webp"
+              src="/images/bhusethu_logo.png"
               alt=""
               width="32"
               height="32"

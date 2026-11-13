@@ -1,3 +1,4 @@
+import SiteFooter from "../components/SiteFooter";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
@@ -23,8 +24,9 @@ const FALLBACK_PROPERTY = {
   type: "Apartment / Flat",
   location: "Nallagandla, Hyderabad",
   price: "₹1.38 Cr onwards",
-  description: "Verified residential project in Nallagandla with clear title checks and RERA documentation.",
-  images: [{ url: "/images/properties/bulding2.webp" }]
+  description:
+    "Verified residential project in Nallagandla with clear title checks and RERA documentation.",
+  images: [{ url: "/images/properties/bulding2.webp" }],
 };
 
 export default function PropertiesPage() {
@@ -49,15 +51,16 @@ export default function PropertiesPage() {
   const params = { q: query, type, location, budget, sort };
   const { data: properties = [], isError } = useQuery({
     queryKey: ["properties", "public", params],
-    queryFn: ({ signal }) =>
-      api.get("/api/properties", { params, signal }),
+    queryFn: ({ signal }) => api.get("/api/properties", { params, signal }),
     select: (res) => res.data || [],
     placeholderData: keepPreviousData,
     staleTime: 60_000,
   });
 
   const listing = isError ? [FALLBACK_PROPERTY] : properties;
-  const activeFilters = [type, location, budget].filter((value) => value !== "all").length;
+  const activeFilters = [type, location, budget].filter(
+    (value) => value !== "all",
+  ).length;
 
   const resetFilters = () => {
     setSearch("");
@@ -87,7 +90,7 @@ export default function PropertiesPage() {
           >
             <img
               className="brand-mark"
-              src="/images/bhusethu_logo.webp"
+              src="/images/bhusethu_logo.png"
               alt=""
               width="42"
               height="42"
@@ -99,7 +102,7 @@ export default function PropertiesPage() {
           </Link>
           <nav className="primary-nav" aria-label="Primary">
             <Link to="/">Home</Link>
-            <Link to="/#services">Services</Link>
+            <Link to="/services">Services</Link>
             <Link aria-current="page" to="/properties">
               Properties
             </Link>
@@ -141,7 +144,7 @@ export default function PropertiesPage() {
         </div>
         <nav aria-label="Mobile">
           <Link to="/">Home</Link>
-          <Link to="/#services">Services</Link>
+          <Link to="/services">Services</Link>
           <Link aria-current="page" to="/properties">
             Properties
           </Link>
@@ -270,7 +273,11 @@ export default function PropertiesPage() {
                   aria-expanded={panelOpen}
                   aria-controls="filterPanel"
                 >
-                  <SlidersHorizontal size={17} strokeWidth={2} aria-hidden="true" />
+                  <SlidersHorizontal
+                    size={17}
+                    strokeWidth={2}
+                    aria-hidden="true"
+                  />
                   Filters
                   <span className="count" hidden={activeFilters === 0}>
                     {activeFilters}
@@ -291,7 +298,10 @@ export default function PropertiesPage() {
               </div>
             </div>
 
-            <div className={`plp-filter${panelOpen ? " is-open" : ""}`} id="filterPanel">
+            <div
+              className={`plp-filter${panelOpen ? " is-open" : ""}`}
+              id="filterPanel"
+            >
               <div className="plp-filter__inner">
                 <div className="plp-filter__head">
                   <h3>Filter properties</h3>
@@ -372,7 +382,8 @@ export default function PropertiesPage() {
 
             <div className="plp-meta">
               <p className="plp-meta__count" aria-live="polite">
-                {listing.length} {listing.length === 1 ? "property" : "properties"}
+                {listing.length}{" "}
+                {listing.length === 1 ? "property" : "properties"}
               </p>
               <p className="plp-meta__hint">
                 <BadgeCheck size={16} strokeWidth={2} aria-hidden="true" />
@@ -386,10 +397,7 @@ export default function PropertiesPage() {
                   ? displayImage(property.images[0].url)
                   : "";
                 return (
-                  <article
-                    className="plp-card"
-                    key={property.id}
-                  >
+                  <article className="plp-card" key={property.id}>
                     <div className="plp-card__media">
                       {image ? (
                         <img
@@ -403,7 +411,9 @@ export default function PropertiesPage() {
                         <span className="plp-card__ph">Photo coming soon</span>
                       )}
                       <div className="plp-card__badges">
-                        <span className="plp-tag plp-tag--gold">New launch</span>
+                        <span className="plp-tag plp-tag--gold">
+                          New launch
+                        </span>
                         <span className="plp-tag">Zero brokerage</span>
                       </div>
                     </div>
@@ -431,7 +441,11 @@ export default function PropertiesPage() {
                           onClick={() => setModal({ type: "buy", property })}
                         >
                           Enquire
-                          <ArrowUpRight size={16} strokeWidth={2} aria-hidden="true" />
+                          <ArrowUpRight
+                            size={16}
+                            strokeWidth={2}
+                            aria-hidden="true"
+                          />
                         </button>
                       </div>
                     </div>
@@ -537,125 +551,7 @@ export default function PropertiesPage() {
         </section>
       </main>
 
-
-      <footer className="site-footer">
-        <div className="container">
-          <div className="footer-top">
-            <div className="footer-brand">
-              <Link
-                className="brand"
-                aria-label="Bhusethu Property Solutions — home"
-                to="/"
-              >
-                <img
-                  className="brand-mark"
-                  src="/images/bhusethu_logo.webp"
-                  alt=""
-                  width="42"
-                  height="42"
-                />
-                <span className="brand-copy">
-                  <span className="brand-name">Bhusethu</span>
-                  <span className="brand-sub">Property Solutions</span>
-                </span>
-              </Link>
-              <p>
-                Property verification, advisory and transaction support across
-                Telangana and Andhra Pradesh.
-              </p>
-              <div className="footer-contact">
-                <a href="tel:+918125291166">+91 81252 91166</a>
-                <a href="mailto:support@bhusethu.com">support@bhusethu.com</a>
-                <span style={{ color: "rgba(245,241,232,.6)" }}>
-                  CoWork Trendz, Capital Park, Madhapur, Hyderabad
-                </span>
-              </div>
-            </div>
-            <nav className="footer-col" aria-label="Explore">
-              <h4>Explore</h4>
-              <ul>
-                <li>
-                  <Link to="/properties">Properties</Link>
-                </li>
-                <li>
-                  <Link to="/#services">Services</Link>
-                </li>
-                <li>
-                  <Link to="/projects">Projects</Link>
-                </li>
-                <li>
-                  <Link to="/about">About us</Link>
-                </li>
-                <li>
-                  <Link to="/contact">Contact</Link>
-                </li>
-              </ul>
-            </nav>
-            <nav className="footer-col" aria-label="Services">
-              <h4>Services</h4>
-              <ul>
-                <li>
-                  <Link to="/services/title-verification">
-                    Title verification
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/services/dispute-resolution">
-                    Dispute resolution
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/services/buying-assistance">
-                    Buying assistance
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/services/selling-assistance">
-                    Selling assistance
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/services/development">Development</Link>
-                </li>
-              </ul>
-            </nav>
-            <div className="footer-col">
-              <h4>Visit us</h4>
-              <p>
-                CoWork Trendz, Capital Park,
-                <br />
-                Madhapur, Hyderabad,
-                <br />
-                Telangana 500081
-              </p>
-              <div className="footer-hours">
-                <div>
-                  <span>Mon – Fri</span>
-                  <span>10:00 – 18:00</span>
-                </div>
-                <div>
-                  <span>Saturday</span>
-                  <span>By appointment</span>
-                </div>
-                <div>
-                  <span>Sunday</span>
-                  <span>Closed</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="footer-bottom">
-            <p>
-              © <span data-year="">2026</span> Bhusethu Property Solutions. All
-              rights reserved.
-            </p>
-            <p>
-              <Link to="/privacy">Privacy policy</Link> ·{" "}
-              <Link to="/contact">Contact</Link>
-            </p>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
 
       {modal && (
         <EnquiryModal
