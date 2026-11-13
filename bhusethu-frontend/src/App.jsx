@@ -7,6 +7,7 @@ import ContactPage from './pages/ContactPage.jsx'
 import PropertiesPage from './pages/PropertiesPage.jsx'
 import ProjectsPage from './pages/ProjectsPage.jsx'
 import ServiceDetailPage from './pages/ServiceDetailPage.jsx'
+import ServicesPage from './pages/ServicesPage.jsx'
 import PrivacyPage from './pages/PrivacyPage.jsx'
 import PropertyListPage from './pages/PropertyListPage.jsx'
 import NotFoundPage from './pages/NotFoundPage.jsx'
@@ -116,8 +117,8 @@ export default function App() {
         <Route path="/projects.html" element={<ProjectsPage />} />
 
         <Route path="/services/:slug" element={<ServiceDetailPage />} />
-        <Route path="/services" element={<Navigate to="/#services" replace />} />
-        <Route path="/services.html" element={<Navigate to="/#services" replace />} />
+        <Route path="/services" element={<ServicesPage />} />
+        <Route path="/services.html" element={<Navigate to="/services" replace />} />
 
         <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/privacy.html" element={<PrivacyPage />} />

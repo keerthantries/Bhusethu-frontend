@@ -1,11 +1,7 @@
+import SiteFooter from "../components/SiteFooter";
 import React, { useEffect } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
-import {
-  ArrowRight,
-  ArrowUpRight,
-  Check,
-  Phone,
-} from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check, Phone } from "lucide-react";
 import { SERVICES, getService } from "../data/services";
 
 export default function ServiceDetailPage() {
@@ -18,7 +14,9 @@ export default function ServiceDetailPage() {
     const canonical = document.querySelector('link[rel="canonical"]');
     const description = document.querySelector('meta[name="description"]');
     const ogTitle = document.querySelector('meta[property="og:title"]');
-    const ogDescription = document.querySelector('meta[property="og:description"]');
+    const ogDescription = document.querySelector(
+      'meta[property="og:description"]',
+    );
     const previous = {
       title: document.title,
       description: description?.getAttribute("content"),
@@ -81,7 +79,7 @@ export default function ServiceDetailPage() {
               "@type": "ListItem",
               position: 2,
               name: "Services",
-              item: "https://www.bhusethu.com/#services",
+              item: "https://www.bhusethu.com/services",
             },
             {
               "@type": "ListItem",
@@ -97,20 +95,25 @@ export default function ServiceDetailPage() {
 
     return () => {
       document.title = previous.title;
-      if (previous.description) description?.setAttribute("content", previous.description);
+      if (previous.description)
+        description?.setAttribute("content", previous.description);
       if (previous.ogTitle) ogTitle?.setAttribute("content", previous.ogTitle);
       if (previous.ogDescription)
         ogDescription?.setAttribute("content", previous.ogDescription);
-      if (previous.canonical) canonical?.setAttribute("href", previous.canonical);
+      if (previous.canonical)
+        canonical?.setAttribute("href", previous.canonical);
       if (ogUrl) ogUrl.remove();
       schema.remove();
     };
   }, [service]);
 
-  if (!service) return <Navigate to="/#services" replace />;
+  if (!service) return <Navigate to="/services" replace />;
 
   const Icon = service.icon;
-  const related = SERVICES.filter((item) => item.slug !== service.slug).slice(0, 3);
+  const related = SERVICES.filter((item) => item.slug !== service.slug).slice(
+    0,
+    3,
+  );
   const contactHref = `/contact?service=${service.service}`;
 
   return (
@@ -128,7 +131,7 @@ export default function ServiceDetailPage() {
           >
             <img
               className="brand-mark"
-              src="/images/bhusethu_logo.webp"
+              src="/images/bhusethu_logo.png"
               alt="Bhusethu"
             />
             <span className="brand-copy">
@@ -138,7 +141,7 @@ export default function ServiceDetailPage() {
           </Link>
           <nav className="primary-nav" aria-label="Primary">
             <Link to="/">Home</Link>
-            <Link to="/#services" aria-current="page">
+            <Link to="/services" aria-current="page">
               Services
             </Link>
             <Link to="/properties">Properties</Link>
@@ -168,7 +171,11 @@ export default function ServiceDetailPage() {
       <div className="mobile-nav" id="mobileNav" hidden>
         <div className="mobile-nav-head">
           <span className="brand-name">Bhusethu</span>
-          <button className="mobile-close" type="button" aria-label="Close menu">
+          <button
+            className="mobile-close"
+            type="button"
+            aria-label="Close menu"
+          >
             <svg width="20" height="20" aria-hidden="true">
               <use href="/images/icons.svg#icon-x" />
             </svg>
@@ -176,7 +183,7 @@ export default function ServiceDetailPage() {
         </div>
         <nav aria-label="Mobile">
           <Link to="/">Home</Link>
-          <Link to="/#services" aria-current="page">
+          <Link to="/services" aria-current="page">
             Services
           </Link>
           <Link to="/properties">Properties</Link>
@@ -210,7 +217,7 @@ export default function ServiceDetailPage() {
             <nav className="breadcrumb" aria-label="Breadcrumb">
               <Link to="/">Home</Link>
               <span aria-hidden="true">/</span>
-              <Link to="/#services">Services</Link>
+              <Link to="/services">Services</Link>
               <span aria-hidden="true">/</span>
               <span aria-current="page">{service.nav}</span>
             </nav>
@@ -284,7 +291,9 @@ export default function ServiceDetailPage() {
             <section className="sp-process" aria-labelledby="process-title">
               <div className="sp-process__head">
                 <span className="eyebrow">How it works</span>
-                <h2 id="process-title">A clear path from question to decision.</h2>
+                <h2 id="process-title">
+                  A clear path from question to decision.
+                </h2>
               </div>
               <ol className="sp-steps">
                 {service.process.map((step, index) => (
@@ -319,7 +328,7 @@ export default function ServiceDetailPage() {
             <section className="sp-related" aria-labelledby="related-title">
               <div className="sp-related__head">
                 <h2 id="related-title">Other ways we can help</h2>
-                <Link className="link-arrow" to="/#services">
+                <Link className="link-arrow" to="/services">
                   All services
                   <ArrowRight size={16} strokeWidth={2} aria-hidden="true" />
                 </Link>
@@ -334,13 +343,21 @@ export default function ServiceDetailPage() {
                       to={`/services/${item.slug}`}
                     >
                       <span className="sp-related__icon">
-                        <RelatedIcon size={19} strokeWidth={1.9} aria-hidden="true" />
+                        <RelatedIcon
+                          size={19}
+                          strokeWidth={1.9}
+                          aria-hidden="true"
+                        />
                       </span>
                       <div>
                         <h3>{item.nav}</h3>
                         <span className="sp-related__link">
                           View service
-                          <ArrowUpRight size={14} strokeWidth={2} aria-hidden="true" />
+                          <ArrowUpRight
+                            size={14}
+                            strokeWidth={2}
+                            aria-hidden="true"
+                          />
                         </span>
                       </div>
                     </Link>
@@ -372,79 +389,7 @@ export default function ServiceDetailPage() {
         </section>
       </main>
 
-      <footer className="site-footer">
-        <div className="container">
-          <div className="footer-top">
-            <div className="footer-brand">
-              <Link
-                className="brand"
-                aria-label="Bhusethu Property Solutions — home"
-                to="/"
-              >
-                <img
-                  className="brand-mark"
-                  src="/images/bhusethu_logo.webp"
-                  alt="Bhusethu"
-                />
-                <span className="brand-copy">
-                  <span className="brand-name">Bhusethu</span>
-                  <span className="brand-sub">Property Solutions</span>
-                </span>
-              </Link>
-              <p>
-                Property verification, advisory and transaction support across
-                Telangana and Andhra Pradesh.
-              </p>
-              <div className="footer-contact">
-                <a href="tel:+918125291166">+91 81252 91166</a>
-                <a href="mailto:support@bhusethu.com">support@bhusethu.com</a>
-              </div>
-            </div>
-            <nav className="footer-col" aria-label="Explore">
-              <h4>Explore</h4>
-              <ul>
-                <li><Link to="/properties">Properties</Link></li>
-                <li><Link to="/#services">Services</Link></li>
-                <li><Link to="/projects">Projects</Link></li>
-                <li><Link to="/about">About us</Link></li>
-                <li><Link to="/contact">Contact</Link></li>
-              </ul>
-            </nav>
-            <nav className="footer-col" aria-label="Services">
-              <h4>Services</h4>
-              <ul>
-                {SERVICES.slice(0, 5).map((item) => (
-                  <li key={item.slug}>
-                    <Link to={`/services/${item.slug}`}>{item.nav}</Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-            <div className="footer-col">
-              <h4>Visit us</h4>
-              <p>
-                CoWork Trendz, Capital Park,
-                <br />
-                Madhapur, Hyderabad,
-                <br />
-                Telangana 500081
-              </p>
-              <div className="footer-hours">
-                <div><span>Mon – Fri</span><span>10:00 – 18:00</span></div>
-                <div><span>Saturday</span><span>By appointment</span></div>
-                <div><span>Sunday</span><span>Closed</span></div>
-              </div>
-            </div>
-          </div>
-          <div className="footer-bottom">
-            <p>© <span data-year="">2026</span> Bhusethu Property Solutions. All rights reserved.</p>
-            <p>
-              <Link to="/privacy">Privacy policy</Link> ·{" "}
-              <Link to="/contact">Contact</Link>
-            </p>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </>
   );
 }
