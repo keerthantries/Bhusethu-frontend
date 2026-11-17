@@ -114,6 +114,7 @@ html {
   overflow: hidden;
   overflow-y: auto;
   scroll-behavior: auto !important;
+  overscroll-behavior: none;
 }
 
 body {
@@ -128,6 +129,7 @@ body {
   overflow-x: hidden;
   margin: 0;
   background: #fff;
+  overscroll-behavior: none;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
