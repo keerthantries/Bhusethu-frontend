@@ -52,6 +52,7 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  overscroll-behavior: none;
 }
 body {
   margin: 0;
@@ -62,6 +63,7 @@ body {
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   overflow-x: clip;
+  overscroll-behavior: none;
 }
 body.nav-open {
   overflow: hidden;
@@ -476,6 +478,11 @@ h2 em {
 }
 .menu-toggle:hover span:last-child {
   transform: translateY(1px);
+}
+@media (max-width: 374px) {
+  .header-cta .header-btn {
+    display: none;
+  }
 }
 @media (min-width: 1080px) {
   :root {
@@ -2429,7 +2436,7 @@ h2 em {
   }
 }
 @media (max-width: 999px) {
-  body.has-mobile-cta {
+  body.has-mobile-cta:has(.mobile-cta) {
     padding-bottom: 76px;
   }
   .mobile-cta {

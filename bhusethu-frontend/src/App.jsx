@@ -23,11 +23,14 @@ function SiteRuntime() {
   const location = useLocation()
 
   useEffect(() => {
-    const siteScript = document.createElement('script')
-    siteScript.src = '/js/site.js?v=' + Date.now()
-    document.body.appendChild(siteScript)
-
     const scrollTimers = []
+    let siteScript
+    // Defer loading so StrictMode's mount/cleanup/mount cycle injects it once.
+    const scriptTimer = setTimeout(() => {
+      siteScript = document.createElement('script')
+      siteScript.src = '/js/site.js?v=' + Date.now()
+      document.body.appendChild(siteScript)
+    }, 0)
     const timer = setTimeout(() => {
       const hero = document.querySelector('.hz')
       const hzBox = document.querySelector('[data-hz-slides]')
@@ -85,9 +88,10 @@ function SiteRuntime() {
     }, 50)
 
     return () => {
+      clearTimeout(scriptTimer)
       clearTimeout(timer)
       scrollTimers.forEach(clearTimeout)
-      if (siteScript.parentNode) {
+      if (siteScript?.parentNode) {
         siteScript.parentNode.removeChild(siteScript)
       }
     }
