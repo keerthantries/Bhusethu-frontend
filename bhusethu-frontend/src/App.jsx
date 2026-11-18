@@ -75,16 +75,7 @@ function SiteRuntime() {
         scrollTimers.push(setInterval(() => show(i + 1), 5000))
       }
 
-      if (location.hash) {
-        const scrollToHash = () => {
-          const target = document.querySelector(location.hash)
-          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' })
-        }
-        scrollToHash()
-        scrollTimers.push(setTimeout(scrollToHash, 350), setTimeout(scrollToHash, 900))
-      } else {
-        window.scrollTo(0, 0)
-      }
+      if (!location.hash) window.scrollTo(0, 0)
     }, 50)
 
     return () => {
@@ -95,7 +86,21 @@ function SiteRuntime() {
         siteScript.parentNode.removeChild(siteScript)
       }
     }
-  }, [location])
+  }, [location.pathname, location.search])
+
+  useEffect(() => {
+    if (!location.hash) return
+    const scrollToHash = () => {
+      const target = document.querySelector(location.hash)
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+    const hashTimers = [
+      setTimeout(scrollToHash, 50),
+      setTimeout(scrollToHash, 350),
+      setTimeout(scrollToHash, 900),
+    ]
+    return () => hashTimers.forEach(clearTimeout)
+  }, [location.hash, location.pathname])
 
   return null
 }
