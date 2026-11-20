@@ -896,7 +896,7 @@ export default function HomePage() {
             </div>
 
             <div className="hz__visual">
-              <div className="hz__frame">
+              <div className="hz__frame" style={{ aspectRatio: "1 / 1" }}>
                 <div
                   className="hz__slides"
                   data-hz-slides=""

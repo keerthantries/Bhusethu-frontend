@@ -4402,7 +4402,7 @@ h2 em {
 }
 .hz__frame {
   position: relative;
-  aspect-ratio: 1 / 1.06;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   border-radius: 28px 28px 120px 28px; /* signature cut corner */
   background: transparent;
@@ -4434,7 +4434,7 @@ h2 em {
 }
 .hz__slide:nth-child(2),
 .hz__slide:nth-child(3) {
-  object-fit: contain;
+  object-fit: cover;
   transform: scale(1);
 }
 .hz__frame:hover {
@@ -4720,7 +4720,7 @@ h2 em {
     transform: translateX(12px);
   }
   .hz__frame {
-    aspect-ratio: 1 / 1.06;
+    aspect-ratio: 1 / 1;
   }
   .hz__bars {
     right: 1.4rem;
@@ -5430,7 +5430,7 @@ h2 em {
   }
   .hn__slide:nth-child(2),
   .hn__slide:nth-child(3) {
-    object-fit: contain;
+    object-fit: cover;
     transform: scale(1);
     border-radius: 18px;
   }
@@ -10612,5 +10612,5 @@ h2 em {
 }
 .hz__slide:nth-child(2),
 .hz__slide:nth-child(3) {
-  clip-path: inset(2.83% 0 round 18px);
+  clip-path: none;
 }
